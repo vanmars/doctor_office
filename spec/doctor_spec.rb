@@ -66,13 +66,27 @@ describe ('#Doctor') do
   end
 
   describe('.find_by_specialty') do
-  it('finds all the doctors for a given speicalty') do
-    doctor = Doctor.new({name: 'Joe', id: nil, specialty_id: @specialty.id})
-    doctor.save
-    doctor2 = Doctor.new({name: 'Vanessa', id: nil, specialty_id: @specialty.id})
-    doctor2.save
-    expect(Doctor.find_by_specialty(@specialty.id)).to(eq([doctor, doctor2]))
+    it('finds all the doctors for a given speicalty') do
+      doctor = Doctor.new({name: 'Joe', id: nil, specialty_id: @specialty.id})
+      doctor.save
+      doctor2 = Doctor.new({name: 'Vanessa', id: nil, specialty_id: @specialty.id})
+      doctor2.save
+      expect(Doctor.find_by_specialty(@specialty.id)).to(eq([doctor, doctor2]))
+    end
   end
-end
+
+  describe('#patients') do
+    it('returns all patients for a doctor') do
+      doctor = Doctor.new({name: 'Joe', id: nil, specialty_id: @specialty.id})
+      doctor.save
+      patient1 = Patient.new({ name: 'Joe', birthdate: '2000-06-06', id: nil, doctor_id: 0 })
+      patient1.save
+      patient1.update({doctor_id: doctor.id})
+      patient2 = Patient.new({ name: 'Billy', birthdate: '2000-02-09', id: nil, doctor_id: 0})
+      patient2.save
+      patient2.update({doctor_id: doctor.id})
+      expect(doctor.patients).to(eq([patient1, patient2]))
+    end
+  end
 
 end

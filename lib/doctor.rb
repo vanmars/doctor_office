@@ -66,4 +66,7 @@ class Doctor
     doctors
   end
 
+  def patients
+    Patient.find_by_doctor(@id)
+  end
 end
