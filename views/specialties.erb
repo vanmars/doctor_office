@@ -1,0 +1,15 @@
+<h1>Doctor's Office</h1>
+
+<h3>All Specialties</h3>
+
+<% if @specialties.any? %>
+  <ul>
+    <% @specialties.each do |specialty| %>
+      <li><a href="/specialties/<%= specialty.id %>"><%= specialty.name %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no specialties at this time.</p>
+<% end %>
+
+<a href="/specialties/new">Add a new specialty</a>

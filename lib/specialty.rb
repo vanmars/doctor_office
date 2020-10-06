@@ -46,4 +46,9 @@ class Specialty
   def delete
     DB.exec("DELETE FROM specialties WHERE id = #{@id};")
   end
+
+  def doctors
+    Doctor.find_by_specialty(@id)
+  end
+  
 end

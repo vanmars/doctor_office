@@ -1,0 +1,26 @@
+<h4>Specialty: <%= @specialty.name%></h4>
+
+<h5>Doctors</h5>
+
+  <% if @specialty.doctors %>
+    <ul>
+      <% @specialty.doctors.each do |doctor| %>
+        <li><a href="/specialties/<%= @specialty.id %>/doctors/<%= doctor.id %>"><%= doctor.name %></a></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>There are no doctors listed for this specialty yet.</p>
+  <% end %>
+
+  <h5>Add a Doctor:</h5>
+
+<form action="/specialties/<%= @specialty.id %>/doctors" method="post">
+  <div class="form-group">
+    <label for="doctor_name">Doctor name</label>
+    <input id="doctor_name" name="doctor_name" class="form-control" type="text">
+  </div>
+  <button type="submit" class="btn">Add doctor</button>
+</form>
+
+
+<a href="/specialties">Return to specialty list</a>
