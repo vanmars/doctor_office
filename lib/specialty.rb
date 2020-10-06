@@ -8,5 +8,13 @@ class Specialty
   end
 
   def self.all
+    returned_specialties = DB.exec('SELECT * FROM specialties;')
+    specialties = []
+    returned_specialties.each do |specialty|
+      name = specialty.fetch('name')
+      id = specialty.fetch('id')
+      specialties.push(Specialty.new({:name => name, :id => id}))
+    end
+    specialties
   end
 end 
