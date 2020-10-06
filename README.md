@@ -34,17 +34,9 @@ As an administrator, I want to view an alphabetical list of doctors including th
 
 ## Plan of Action
 
-1. Create classes for Doctor, Patient, and Speciality with full CRUD functionality. (with tests)
+1. Create classes for Doctor, Patient, and Speciality with full CRUD functionality (with tests).
 2. Create db tables for all three classes
-3. Create sinatra routes.
-
-## Backend Logic
-| CRUD Action | Method | Description | URL |
-| ------------| ------ | ----------- | --- |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
+3. Create sinatra routes (with integration tests).
 
 ## SQL Schema
 <img src="/public/images/sql_schema.png" alt="map of sql tables">
